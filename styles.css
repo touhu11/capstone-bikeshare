@@ -114,6 +114,7 @@ table {
         /* Top thick border */
         .academic-table thead {
             border-top: 2px solid #005699;
+             border-bottom: 1px solid #005699;
         }
 
         /* Bottom border of the header zone */
@@ -157,3 +158,5 @@ table {
         .academic-table td.row-label {
             font-weight: bold;
         }
+
+
