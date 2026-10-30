@@ -7,8 +7,6 @@ output: html_document
 
 ![](cyclistic_brand.jpg)
 
-# Introduction
-
 Cyclictic is a company located in Chicago. It provides bike transportation to customers as a rider. At the present, its bike-share program that features more than 5,800 bicycles and 600 docking stations. It is offering three kinds of bikes, reclining bikes, hand tricycles, and cargo bikes, which are inclusive to people with disabilities and riders who cannot use a standard two-wheeled bike. The bikes can be unlocked from one station and returned to any other station in the system at anytime.
 
 
@@ -104,6 +102,19 @@ Based on my findings, I would like to give three recommendations.
 
 (3). Their usage patterns are similar to those of the members by considering the ride lengths by days of the week. Their trip lengths are even longer, so they can save more if they subcribe their annual membership.
 
+<<<<<<< HEAD
+=======
+- **Focus:** Practical analysis, clear communication, and actionable insights.
+- **Tools:** Python, Power BI, and Excel.
+- **Case study:** [View Case Study →](./Project-management/index.html)
+### PROJECT 03: Healthcare--Heart Disease
+The project is to use machine learning models including the logistic regression and
+random forest to predict the risk of heart disease for an individual with a specific
+health record.
+- **Key areas:** Data Analysis, Model Selection, Data Presentation, and Documenation.
+- **Tools:** R
+- **Case Study:**[View Case Study →](./Project-Healthcare/index.html)
+>>>>>>> b338fe8 (changes)
 
 
 
