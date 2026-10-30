@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Porfolio</title>
+        <link rel = "stylesheet" href = "../styles.css"></link>
+        <link rel="stylesheet" href="./project.css">
+
+    </head>
+    <body>
+        <article>
+           <h1> Case Study: Heart Disease </h1> 
+           <section>
+            <h2>Introduction</h2>
+            <p>
+              This case study will try to understand the risks of heart attacks using health 
+              information such as age, resting blood pressure, maximum heart rate, cholesterol measurements,
+              and other risk factors, and its outcome will be helpful for a health practitioner to assess
+              this risk of heart disease for an individual based on a specific medical record.
+            </p>
+           </section>
+
+           <section>
+            <h2> Research and Methodology </h2>
+            <p>
+                The theoretical framework for this study is based on the machine learning models including
+                logistic regression and random forest to predict the present of heart disease for a patient
+                 and his or her medical record as shown in <strong> Table 1</strong>.
+            </p>
+      
+<div class="apa-table">
+    <p class="table-number"><strong>Table 1</strong></p>
+    <p class="table-title"><em>Data Descriptions for the Heart Disease Dataset</em></p>
+
+    <table class="academic-table">
+        <thead> <tr> <th>No.</th> <th>Variables</th> <th> Descriptions</th> </tr> </thead>
+        <tbody>
+            <tr> <td>1</td> <td>hd</td> <td>Heart disease presence: 0 = no, 1 = yes</td> </tr>
+            <tr> <td>2</td> <td>age</td> <td>A person's age</td> </tr> 
+            <tr> <td>3</td> <td>sex</td> <td>A person's sex: 0 = female, 1 = male</td> </tr>
+            <tr> <td>4</td> <td>pb_rest</td> <td>Resting blood pressure: verify the variable coding in the dataset</td></tr>
+            <tr> <td>5</td> <td>ang_exe</td> <td>Exercise-induced angina: 0 = no, 1 = yes</td> </tr>
+            <tr> <td>6</td> <td>hr_max</td> <td>Maximum heart rate achieved</td> </tr>
+            <tr> <td>7</td> <td> pain_che</td> <td>Type of chest pain: 0 = no, 1 = typical angina,
+                    2 = atypical angina, 3 = non-anginal pain</td> </tr>
+            <tr> <td>8</td> <td>ecg_rest</td> <td>Resting electrocardiographic measurement:
+                    0 = normal, 1 = ST-T wave abnormality,
+                    2 = probable or definite left ventricular
+                    hypertrophy by Estes' criteria</td> </tr>
+            <tr> <td>9</td> <td>chol</td> <td>Cholesterol measurement</td> </tr>
+            <tr> <td>10</td> <td>num_ves</td> <td>Number of major vessels</td> </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ol>
+    <li><h3>Logistic Regresson Model for Head Disease</h3> 
+        <h4> Fitting the Logistic Regression Model </h2>
+        <p>
+            The logistic regression model to the heat disease (Y) with age (\(X_1\)), resting blood pressure (\(X^2\)), and
+            exercise induced agnia (\(X_4)\): <br>
+            
+                E(Y) =  \( \frac{e^{\beta_0 +\beta_1X_1 +\beta_2X_2 +\beta_3X_3 + \beta_4X_4}}{1+ e^{\beta_0 +\beta_1X_1 +\beta_2X_2 +\beta_3X_3 + \beta_4X_4}} \)
+            where \(X_2\) is the dummy variable with 1: level of exercise-indduced angina and 0 otherwise. <br>
+            If \(E(\pi) = Y\), then: <br>
+                <span style = "margin-left: 30px;"">
+                    \(ln\frac{\hat{\pi}}{1- \hat{\pi}} = -1.0211 - 0.0175X_1 - 0.0149X_2 -1.6250X_3+ 0.0311X_4\)
+                </span> <br>
+                    
+            with the significance level as shown in Table 2.
+
+            <p> <strong>Table 2</strong></p>
+            <p> <em>Coefficient Estimates for the Logistic Regression for Heart Disease </em> </p>
+<p>
+<table class="academic-table">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Estimate</th>
+            <th>Std_Error</th>
+            <th>t_value</th>
+            <th>p_value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>(Intercept)</td>
+            <td>-1.0211</td>
+            <td>1.7842</td>
+            <td>-0.5723</td>
+            <td>0.5671</td>
+        </tr>
+        <tr>
+            <td>age</td>
+            <td>-0.0175</td>
+            <td>0.0171</td>
+            <td>-1.0236</td>
+            <td>0.306</td>
+        </tr>
+        <tr>
+            <td>bp_rest</td>
+            <td>-0.0149</td>
+            <td>0.0083</td>
+            <td>-1.7857</td>
+            <td>0.0741</td>
+        </tr>
+        <tr>
+            <td>ang_exe1</td>
+            <td>-1.6250</td>
+            <td>0.3058</td>
+            <td>-5.3143</td>
+            <td><em>p</em> &lt; 0.001</td>
+        </tr>
+        <tr>
+            <td>hr_max</td>
+            <td>0.0311</td>
+            <td>0.0073</td>
+            <td>4.2740</td>
+            <td><em>p</em> &lt; 0.001</td>
+        </tr>
+    </tbody>
+</table> </p>
+
+
+    </p>
+    <h4> Model Fitness: Hosmer-Lesshow Goodness of Fit Test </h2>
+    <p>
+        The test uses the test statistic: <br>
+        \[ \chi^2 = \sum_{i = 1}^{i = G} \frac{(O_i - E_i)^2}{E_i}\]
+    </p>
+    <p> where \(O_i\) and \(E_i\) are the observed and expected counts of persons with heart disease
+        in the \(i^{th}\) group from which the predicted probabilities are divided into G groups. 
+        The result of the test is given in Table 3. With the level of significance of 5%, the test does not
+        reject the hypothesis that the model is not well fit. Thus, the regression model can be useful
+        to predict the heart disease. 
+    </p>
+            <p> <strong>Table 3</strong></p>
+            <p> <em>Hosmer-Lemeshow Goodness of Fit Test</em> </p>
+<table class="academic-table">
+    <thead>
+        <tr>
+            <th>Chi-squared</th>
+            <th>df</th>
+            <th>p_value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>9.192</td>
+            <td>8</td>
+            <td>0.3264</td>
+        </tr>
+    </tbody>
+</table> 
+<h4> Assessing the Model Performance </h2>.
+    <p> The model performance can be assed by accuracy, precision, and the recall rates
+        which are calculated from the classification matrix called the confusion matrix in <strong> Table 4</strong>, 
+        the performance metrics are given in Table 5. 
+    </p>
+      <p> <strong>Table 4</strong></p>
+        <p> <em>The Confusion Matrix for the Logistic Regression Model</em> </p>
+<p>
+    <table class="academic-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Predicted: 0</th>
+            <th>Predicted: 1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Actual: 0</th>
+            <td>89</td>
+            <td>49</td>
+        </tr>
+        <tr>
+            <th>Actual: 1</th>
+            <td>31</td>
+            <td>134</td>
+        </tr>
+    </tbody>
+    </table>
+</p>
+<p><strong> Table 5</strong></p>
+<p><em>Performance Matric for the Logistic Regression Model</em></p>
+<p>
+    <table class="academic-table">
+    <thead>
+        <tr>
+            <th>Metric</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Accuracy</td>
+            <td>73.6%</td>
+        </tr>
+        <tr>
+            <td>Precision</td>
+            <td>73.22%</td>
+        </tr>
+        <tr>
+            <td>Recall</td>
+            <td>81.21%</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+<p> We can see that the model is able to predict with the accuracy of 73.6%.
+    Among those predicted with a heart disease, the model can predict correctly 72.2%,
+    and among those with actual heart disease, the model can correctly identify them 81.2%. 
+    This performance can be visualized in the ROC curve in <strong>Figure 1</strong>.
+</p>
+    <p><strong>Figure 1</strong></p>
+    <p><em> ROC Curve for the Lostistic Regression Model</em></p>
+  <p> <img src = "./images/ROC.png" class = "roc-image" alt = "ROC Curve"></p>
+
+<h4> Predicting the Heart Disease</h2>.
+    <p> The model can be used to predict the likelyhood of an invidual with a specific health record.
+        For example, individuals with the specfic records can be predicted as shown in Table 6.
+        Thus, those who have a health record in Case 2 more likely have the heart disease, which accounts
+        the chance of 78%.
+    </p>
+    <p><strong>Tabel 6</strong></p>
+    <p><em> Predicted Probabilities and Odds from the Model</em></p>
+<p>
+    <table class="academic-table">
+    <thead>
+        <tr>
+            <th>Measure</th>
+            <th>Case 1</th>
+            <th>Case 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Age (years)</td>
+            <td>50</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>Resting Blood Pressure (bp_rest)</td>
+            <td>122</td>
+            <td>130</td>
+        </tr>
+        <tr>
+            <td>Exercise-Induced Angina (ang_exe)</td>
+            <td>1</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>Maximum Heart Rate (hr_max)</td>
+            <td>140</td>
+            <td>165</td>
+        </tr>
+        <tr style ="border-top: 1px solid #005699;">
+            <td>Predicted Probability</td>
+            <td>0.2716</td>
+            <td>0.7853</td>
+        </tr>
+        <tr>
+            <td>Predicted Odds</td>
+            <td>0.3728</td>
+            <td>3.6571</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+
+    </li>
+
+    <li><h3>Random Forest Classification Model for the Heart Disease</h3>
+
+<p>
+    The original dataset with the size of 303 is split into a training and test set with a 85%-15% split.
+    The two datasets are fitted into the random forest classification model using the predictors pain_che, 
+    bp_rest, chol, ecg_rest, ang_exe, and num_ves. The error rates with the number of trees for both 
+    datasets are shown in \(Figure 1\). At the number of trees around 100, the graph has shown that
+    the error rate becomes flat. 
+</p>
+    <p><strong>Figure 1</strong></p>
+    <p><em> Error Rates of the Random Forest Model for the Number of Trees from 1 to 150</em></p>
+<p> <img src = "./images/error_rate.png" class = "roc-image" alt = "ROC Curve"></p>
+
+<h4> Assessing the Random Forest Classificaition Model</h4>
+<p> Using the optimal number of 50 trees, the performance matrics for the training and test datasets 
+    are summized in <strong>Table 7 </strong>
+</p>
+    <p><strong>Tabel 7</strong></p>
+    <p><em> Performance Metrics for the Random Forest Model Using the Training and Test Datasets</em></p>
+<p>
+    <table class="academic-table">
+    <thead>
+        <tr>
+            <th>Performance Metric</th>
+            <th>Training Dataset</th>
+            <th>Test Dataset</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Accuracy</td>
+            <td>0.8444</td>
+            <td>0.6522</td>
+        </tr>
+        <tr>
+            <td>Precision</td>
+            <td>0.8503</td>
+            <td>0.7000</td>
+        </tr>
+        <tr>
+            <td>Recall</td>
+            <td>0.8467</td>
+            <td>0.7500</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+</li>
+</ol>
+<h2> Model Selection </h2>
+<p> 
+    The logistic regression model, which is a parametric model perform better than the random forest 
+    classification model accoross the performance metrics as shown in <strong> Table 8 </strong>. 
+</p>
+ <p><strong>Tabel 8</strong></p>
+    <p><em> Performance Metrics for Logistic Regression and Random Forest Models</em></p>
+<p>
+    <table class="academic-table">
+    <thead>
+        <tr>
+            <th>Performance Metrics</th>
+            <th>Logistic Regression </th>
+            <th> Random Forest</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Accuracy</td>
+            <td>0.74</td>
+            <td>0.6522</td>
+        </tr>
+        <tr>
+            <td>Precision</td>
+            <td>0.73</td>
+            <td>0.7000</td>
+        </tr>
+        <tr>
+            <td>Recall</td>
+            <td>0.81</td>
+            <td>0.7500</td>
+        </tr>
+    </tbody>
+</table>
+</p>
+
+<h2> Recommendation </h2>
+<p>
+In sum, the logistic regression model is more practical to predict the heart desease with a health record
+of each invidual with the estimated probability while the random forest classification can only classify
+whether each individual is likely in which category whether he or she is at risk or not.
+</p>
+
+        </article>
+        
+        <script src = "main.js"> </script> 
+        
+        <script> MathJax = {tex:
+            {inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]},
+            chtml: {scale:1.2}
+            };
+        </script>
+         <!-- Load MathJax -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <!-- Your existing JavaScript -->
+        <script src="main.js"></script>
+
+
+
+    </body class = "main-content">
+</html>
+
+
