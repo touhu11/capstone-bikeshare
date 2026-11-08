@@ -1,157 +1,677 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Porfolio</title>
-        <link rel = "stylesheet" href = "../styles.css"></link>
+<html lang="en">
 
-    </head>
-    <body> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Cyclistic bike-share case study examining differences between casual riders and annual members through data cleaning, exploratory analysis, and business recommendations.">
+
+    <title>Cyclistic Bike-Share Analysis | Data Analytics Portfolio</title>
+
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="main-content" id="top">
+
+    <main>
         <article>
-           <h1> Case Study: Cyclistic Bike Share</h1> 
-           <section>
-            <h2>Introduction</h2>
-            <p>
-                Cyclictic is a company located in Chicago. It provides bike transportation to customers as a rider. At the present, its bike-share program that features more than 5,800 bicycles and 600 docking stations. It is offering three kinds of bikes, reclining bikes, hand tricycles, and cargo bikes, which are inclusive to people with disabilities and riders who cannot use a standard two-wheeled bike. The bikes can be unlocked from one station and returned to any other station in the system at anytime.
-            </p>
-            <p>
-                There are diversified customer preferences. The majority of riders prefer traditional bikes and only 8% of riders use the assistive options. Cyclistic customers are more likely ride for their leisure and only about 30% use them to commute to work each day.
-            </p>
-            <p>
-                Keeping a long term service strategy, the markeing director leads the data analyst team of six and starts the development of campaigns and initiates to promote the bike-share program.These include email, social media, and other channels.
-            </p>
-            <p>
-                After discussing with the Cyclitic's finance analyst, the marketing director understands that maximizing the number of annual members, called subscribers is the key success for the future growth. However, rather than targeting the new customers, the marketing director, Lily Moreno believes that there is a good chance to convert casual riders into members because they are already aware of the Cyclistic program and have chosen Cyclitic for their mobility needs.
-            </p>
-            <p>
-                However, before this promotion campaign is accepted by the Cyclistic executive team, the data analyst team of six lead by the marketing director, Lily Moreno needs to provide the guides with data driven strategy.
-            <p>
-                As a data anlayst, my work is to find the insights from the dataset and present them to the stakeholders, who are my marketing supervisor, Moreno, and Cyclistic executive team. The business problem is to search for the differences that annual members and casual riders use Cyclistic bikes.
-            </p>
-           </section>
-           <section>
-            <h2> State 1: Ask</h2>
-                <p>
-                    The question to the business problem is "how do annual members and casual riders use Cyclistic bikes differently?". To answer this question, the six stages of the data analysis are needed to support the findings and presented to the team members and the stakeholders.
-                </p>
-           </section>
-           <section>
-            <h2> State 2: Prepare</h2>
-                <p>
-                    The historical data for bike trips can be publicly accessed at [the company's website](https://divvy-tripdata.s3.amazonaws.com/index.html). The data is in zip files and organized by years from 2014 to 2022. Only 12 most recently monthly datasets that are relevant to the business problem are considered, downloaded and housed locally in a sub-folder for further stages of the analysis.
-                </p>
-                <p>
-                    The data integrity is well mananged because the data is originally collected and owned by Cyclistic, and only relevant variables are included to secure the privacy, security and accessibility of the datasets. The trip data by the staff serice and system inspection is deleted to guarantee the accuracy. Generally speaking, the data is ROCCC because it is regularly updated to the current availabe data. However, it needs some data cleaning because of some false starts of bike trips and users to secure the bike docks.
-                </p>
-           </section>
 
-           <section>
-            <h2> State 3: Process</h2>
-                <p>
-                    To ensure the data integrity and accesiblity, the origal and cleaned data are stored locally and separately in different sub-folders. The csv and excel files are stored in the subfolders "data_csv" and "data_xlxs". The excel files are converted from the origal csv files, and they are cleaned using the sorting and filtering tools to observe any inaccuracy, inconsitancy, and incompleteness. Some records with the ride length less than 60 seconds are deleled from the excel files because they are potially false starts and user's relocks. Since the base time for pricing the charge on bikeride in minutes, a varialbe "ride_length_minutes" is added to the excel files. After that, some data aggregation is done for the purpose of accuracy check.
-                </p>
-                <p>
-                    Also, using R programming, the data is sorted and filtered to look for any inconsistency, inaccuracy and inadequacy, and they are stored locally in a sub-folder. And finally, all the 12 monthly datasets are combined into a dataset for a whole year analysis. Checking the consistency among the results from the spreadsheets and R programming is very helpful in data cleaning so that it guarantees the data integrity.
-                </p>
-                <p>
-                    Since each of the data file is in the csv format, it is converted to the excel format so that the data can be more effectively converted and transformed using the excel rich functionality. For example, using date and time format allows to calculate the ride length of each trip so that it can show some differences between the members and casual riders.
-                </p>
-                <p>
-                    After the ride length is added to the sheet, some inconsistency of the data is observed between the start time and end time of the trips, so those are deleted rowwise.
-                </p>
-           </section>
+            <!-- Project Title -->
+            <header>
+                <h1>Case Study: Cyclistic Bike-Share Analysis</h1>
 
-           <section>
-            <h2> State 4: Analyze</h2>
                 <p>
-                    Firstly, geolocations of the start stations for each of the rider types are shown in the following maps.
-                    <img src = "./images/casual.png" width ="800" height = "400">
-                    <img src = "./images/members.png" width ="800" height = "400" >
+                    An exploratory data analysis project investigating
+                    differences in bike usage between casual riders
+                    and annual members to identify opportunities
+                    for membership growth.
                 </p>
-                <p>For these two types of riders, there is no significant difference for using the bikes in terms of geolocatons of the stations.
-                </p> 
+            </header>
 
-            <h3>Exploratory Data Analysis</h3>
+
+            <!-- Introduction -->
+            <section id="introduction">
+
+                <h2>Introduction</h2>
+
                 <p>
-                    After looking into the ride lengths in details, the data needs more cleaning in statistical terms for the outliers. After removing the outliers using the IQR method, the ride length distributios by types of riders and by days of week are shown here.
-                    <img src = "./images/ride_length_by_riders.jpeg" width ="800" height = "400">
-                    <img src = "./images/ride_length_by_days.jpeg" width ="800" height = "400">
+                    Cyclistic is a Chicago-based bike-share company
+                    that provides bicycle transportation services
+                    to customers. Its bike-share program features
+                    more than 5,800 bicycles and 600 docking stations.
+                    The system offers traditional bicycles as well
+                    as three types of adaptive bicycles: reclining
+                    bikes, hand tricycles, and cargo bikes. These
+                    options provide greater accessibility for
+                    people with disabilities and riders who cannot
+                    use standard two-wheeled bicycles. Customers
+                    can unlock a bicycle at one station and return
+                    it to any other station within the system.
                 </p>
-           
-                <h3>Descriptive measures on ride lengths</h3>
-                <h4>
-                    Descritpive measures on ride length (minutes)
-                </h4>
-                <table style="width:100%" border = 1>
-                    <tr><th> Ride Length </th> <th> Min.</th> <th>Median</th> <th> 1Qu.</th> <th>Mean</th> <th> 3rd Qu.</th> <th> Max.</th> </tr>
-                    <tr><th></th><th> 1 </th> <th> 6.267 </th> <th> 10.667</th> <th>13.234 </th> <th> 17.983</th> <th> 42.217</th> </tr>
-                    </table>
-                <h4>
-                    Descriptive measures on ride lengths (minutes) by type of riders
-                </h4>
-                <table style="width:70%" border=1>
-                    <tr> <th> member_casual </th> <th> mean of ride length in minutes </th>  </tr>
-                      <tr>  <td align = "center"> casual </td> <td align ="center"> 15.67 </td> </tr>
-                      <tr>  </td> <td align = "center"> member </td> <td align = "center"> 11.57 </td> </tr>
-                       </table>
-                <h4>
-                    Descriptive measures on ride lengths (minutes) by days of the week
-                </h4>
 
-                <table style="width:80%" border = 1>
-                    <tr> <th>  </th> <th> day_of_week </th> <th> ride_length_minutes </th>  </tr>
-                      <tr>  <th> 1 </th> <td align = "center"> Sun </td> <td align="center"> 14.76 </td> </tr>
-                      <tr> <th> 2 </th> <td align = "center"> Mon </td> <td align="center"> 12.80 </td> </tr>
-                      <tr> <th> 3 </th> <td align = "center"> Tue </td> <td align="center"> 12.26 </td> </tr>
-                      <tr> <th> 4 </th> <td align = "center"> Wed </td> <td align="center"> 12.35 </td> </tr>
-                      <tr> <th> 5 </th><td align = "center"> Thu </td> <td align="center"> 12.45 </td> </tr>
-                      <tr> <th> 6 </th> <td align = "center"> Fri </td> <td align="center"> 12.98 </td> </tr>
-                      <tr> <th> 7 </th> <td align = "center"> Sat </td> <td align="center"> 14.77 </td> </tr>
-                       </table>
+                <p>
+                    Cyclistic serves customers with different
+                    transportation and recreational preferences.
+                    Most riders prefer traditional bicycles,
+                    while approximately 8% use adaptive options.
+                    Most customers use the service for leisure,
+                    while approximately 30% use it for commuting
+                    to work.
+                </p>
 
-            <p>
-                The trend line of memberhip by month has shown that the percentage of members is decreasing, so it is a negative sign that Cyclistic should consider attacting more causal riders to be an annual member.
-            </p>
+                <p>
+                    To support its long-term growth strategy,
+                    the marketing director leads a team of six
+                    data analysts in developing promotional
+                    campaigns through email, social media,
+                    and other marketing channels.
+                </p>
 
-            <img src = "./images/monthly_percent.jpeg" width ="800" height = "400">
-            <img src = "./images/monthly_mean_length.jpeg" width ="800" height = "400">
+                <p>
+                    After consulting with the finance analyst,
+                    the marketing director recognizes that
+                    increasing the number of annual members,
+                    also called subscribers, is important
+                    to Cyclistic's future growth. Rather than
+                    focusing exclusively on acquiring new
+                    customers, Lily Moreno believes that
+                    converting existing casual riders into
+                    annual members represents a promising
+                    opportunity. These customers are already
+                    familiar with Cyclistic and have chosen
+                    its services for their transportation needs.
+                </p>
 
-            <p>
-                Even by day or month, the difference between the members and casual riders is about four minutes per trip as the bar plot and the line chart have shown.
-            </p>
-            <img src = "./images/daily_mean_length.jpeg" width ="800" height = "400">
+                <p>
+                    Before the proposed promotional campaign
+                    can be presented to the executive team,
+                    the marketing director and data analytics
+                    team need data-driven insights to support
+                    their strategy.
+                </p>
+
+                <p>
+                    As a data analyst, my responsibility is
+                    to investigate differences in how casual
+                    riders and annual members use Cyclistic
+                    bicycles and communicate the findings
+                    to the marketing director and executive
+                    stakeholders. The ultimate business
+                    objective is to identify opportunities
+                    to encourage casual riders to become
+                    annual members.
+                </p>
+
             </section>
-            <section>
-                <h2> Stage 5: Share</h2>
+
+
+            <!-- Stage 1: Ask -->
+            <section id="ask">
+
+                <h2>Stage 1: Ask</h2>
+
+                <h3>Business Question</h3>
+
                 <p>
-                    With the task assigned by the markeing supervisor, Lily Moreno, as a data story teller, after cruching all the data, and using all the methods and tools, I can show the insights clearly to the stakeholders including the executive team and my manager
-with <a href = "cyclistic_presentation.pptx">this power presentaton</a> with some recommenations.
+                    How do annual members and casual riders
+                    use Cyclistic bikes differently?
                 </p>
+
+                <p>
+                    Answering this question requires examining
+                    differences in riding behavior, including
+                    ride duration, usage patterns across days
+                    of the week, monthly trends, and the
+                    geographic distribution of starting stations.
+                    These findings will help identify potential
+                    opportunities for converting casual riders
+                    into annual members.
+                </p>
+
+                <p>
+                    The analysis follows the six stages of
+                    the data analysis process: Ask, Prepare,
+                    Process, Analyze, Share, and Act.
+                </p>
+
             </section>
-            <secton>
-                <h2> Stage 6: Act</h2>
+
+
+            <!-- Stage 2: Prepare -->
+            <section id="prepare">
+
+                <h2>Stage 2: Prepare</h2>
+
                 <p>
-                    Based on my findings, I would like to give three recommendations.
+                    Historical bike-trip data are publicly
+                    available through the
+                    <a href="https://divvy-tripdata.s3.amazonaws.com/index.html"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Cyclistic bike-share data repository
+                    </a>.
+                    The data are provided in ZIP files and
+                    organized by year, covering the period
+                    from 2014 through 2022. For this analysis,
+                    the 12 most recent monthly datasets
+                    relevant to the business problem were
+                    downloaded and stored locally for
+                    further analysis.
                 </p>
+
+                <p>
+                    The data are originally collected and
+                    maintained by Cyclistic. Relevant
+                    variables are included while protecting
+                    customer privacy and data accessibility.
+                    Records associated with staff service
+                    and system inspection are excluded
+                    to maintain the relevance of the
+                    analysis.
+                </p>
+
+                <p>
+                    The datasets generally satisfy the
+                    ROCCC data-quality considerations:
+                    reliability, originality, comprehensiveness,
+                    currency, and citation. However, additional
+                    data cleaning is necessary to address
+                    potential false starts, incomplete trips,
+                    and instances in which users secure
+                    bicycles to docking stations without
+                    completing a typical ride.
+                </p>
+
+            </section>
+
+
+            <!-- Stage 3: Process -->
+            <section id="process">
+
+                <h2>Stage 3: Process</h2>
+
+                <p>
+                    To maintain data integrity and accessibility,
+                    the original and cleaned datasets are
+                    stored separately in different local
+                    subfolders. The original CSV files are
+                    retained, while Excel versions are
+                    created for additional data inspection
+                    and transformation.
+                </p>
+
+                <p>
+                    Using Excel sorting and filtering tools,
+                    I examined the datasets for inaccuracies,
+                    inconsistencies, and incomplete records.
+                    Trips with ride durations shorter than
+                    60 seconds were removed because they
+                    could represent false starts or instances
+                    in which users unlocked and immediately
+                    relocked bicycles.
+                </p>
+
+                <p>
+                    A new variable, <strong>ride_length_minutes</strong>,
+                    was created to calculate the duration
+                    of each trip in minutes. This variable
+                    is important because ride duration
+                    provides a basis for comparing the
+                    usage patterns of casual riders and
+                    annual members.
+                </p>
+
+                <p>
+                    R programming was also used to sort,
+                    filter, and examine the datasets for
+                    inconsistencies, inaccuracies, and
+                    incomplete records. After the monthly
+                    datasets were cleaned, the 12 files
+                    were combined into a single dataset
+                    for the overall analysis.
+                </p>
+
+                <p>
+                    The results obtained through Excel
+                    and R were compared to help verify
+                    the consistency of the data-cleaning
+                    process. This cross-checking provided
+                    an additional opportunity to identify
+                    potential errors before proceeding
+                    with the analysis.
+                </p>
+
+                <p>
+                    Date and time formatting in Excel
+                    also helped calculate individual
+                    trip durations using the difference
+                    between trip start and end times.
+                    Records with inconsistent start
+                    and end times were removed to
+                    improve data quality.
+                </p>
+
+            </section>
+
+
+            <!-- Stage 4: Analyze -->
+            <section id="analyze">
+
+                <h2>Stage 4: Analyze</h2>
+
+                <h3>Geographic Distribution of Starting Stations</h3>
+
+                <p>
+                    The following maps illustrate the geographic
+                    distribution of starting stations for
+                    casual riders and annual members.
+                    Comparing these locations helps examine
+                    whether the two customer groups use
+                    different areas of the Cyclistic network.
+                </p>
+
+                <figure>
+                    <img src="./images/casual.png"
+                         alt="Geographic distribution of starting stations for casual riders"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Starting station locations for casual riders.
+                    </figcaption>
+                </figure>
+
+                <figure>
+                    <img src="./images/members.png"
+                         alt="Geographic distribution of starting stations for annual members"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Starting station locations for annual members.
+                    </figcaption>
+                </figure>
+
+                <p>
+                    Based on the maps, the geographic distributions
+                    of starting stations appear similar between
+                    casual riders and annual members. This suggests
+                    that both customer groups use the existing
+                    Cyclistic station network, rather than
+                    relying on entirely different geographic
+                    areas.
+                </p>
+
+
+                <!-- Exploratory Data Analysis -->
+                <h3>Exploratory Data Analysis</h3>
+
+                <p>
+                    Ride duration is another important variable
+                    for understanding customer behavior.
+                    Before examining its distribution,
+                    additional statistical data cleaning
+                    was performed to address outliers.
+                    The interquartile range (IQR) method
+                    was used to identify and remove
+                    outlying ride durations.
+                </p>
+
+                <p>
+                    The following visualizations show
+                    ride-duration distributions by rider
+                    type and by day of the week.
+                </p>
+
+                <figure>
+                    <img src="./images/ride_length_by_riders.jpeg"
+                         alt="Distribution of ride lengths by rider type"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Ride-duration distributions by rider type.
+                    </figcaption>
+                </figure>
+
+                <figure>
+                    <img src="./images/ride_length_by_days.jpeg"
+                         alt="Distribution of ride lengths by day of the week"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Ride-duration distributions by day of the week.
+                    </figcaption>
+                </figure>
+
+
+                <!-- Descriptive Statistics -->
+                <h3>Descriptive Statistics of Ride Lengths</h3>
+
+                <h4>Overall Ride Duration (Minutes)</h4>
+
+                <table style="width:100%; border-collapse:collapse;"
+                       border="1">
+
+                    <thead>
+                        <tr>
+                            <th>Measure</th>
+                            <th>Minimum</th>
+                            <th>1st Quartile</th>
+                            <th>Median</th>
+                            <th>Mean</th>
+                            <th>3rd Quartile</th>
+                            <th>Maximum</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Ride Length</td>
+                            <td>1</td>
+                            <td>6.267</td>
+                            <td>10.667</td>
+                            <td>13.234</td>
+                            <td>17.983</td>
+                            <td>42.217</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+                <h4>Mean Ride Duration by Rider Type (Minutes)</h4>
+
+                <table style="width:70%; border-collapse:collapse;"
+                       border="1">
+
+                    <thead>
+                        <tr>
+                            <th>Rider Type</th>
+                            <th>Mean Ride Duration</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Casual</td>
+                            <td>15.67</td>
+                        </tr>
+
+                        <tr>
+                            <td>Annual Member</td>
+                            <td>11.57</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <p>
+                    The descriptive statistics indicate
+                    that casual riders have a longer
+                    average ride duration (15.67 minutes)
+                    than annual members (11.57 minutes).
+                    The difference is approximately
+                    4.10 minutes per trip.
+                </p>
+
+
+                <h4>Mean Ride Duration by Day of the Week (Minutes)</h4>
+
+                <table style="width:80%; border-collapse:collapse;"
+                       border="1">
+
+                    <thead>
+                        <tr>
+                            <th>Day Number</th>
+                            <th>Day of Week</th>
+                            <th>Mean Ride Duration</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Sunday</td>
+                            <td>14.76</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Monday</td>
+                            <td>12.80</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Tuesday</td>
+                            <td>12.26</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>Wednesday</td>
+                            <td>12.35</td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td>Thursday</td>
+                            <td>12.45</td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>Friday</td>
+                            <td>12.98</td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+                            <td>Saturday</td>
+                            <td>14.77</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+
+                <!-- Monthly and Daily Trends -->
+                <h3>Monthly and Daily Usage Patterns</h3>
+
+                <p>
+                    The monthly membership trend shows
+                    a decreasing percentage of annual
+                    members over the period examined.
+                    This observation suggests that
+                    Cyclistic should consider strategies
+                    to attract more casual riders
+                    to annual membership.
+                </p>
+
+                <figure>
+                    <img src="./images/monthly_percent.jpeg"
+                         alt="Monthly percentage trends for casual riders and annual members"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Monthly percentage trends by rider type.
+                    </figcaption>
+                </figure>
+
+                <figure>
+                    <img src="./images/monthly_mean_length.jpeg"
+                         alt="Monthly average ride duration"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Monthly mean ride duration.
+                    </figcaption>
+                </figure>
+
+                <p>
+                    The monthly and daily ride-duration
+                    visualizations indicate that casual
+                    riders generally have longer trips
+                    than annual members. The difference
+                    is approximately four minutes per
+                    trip, consistent with the descriptive
+                    statistics presented above.
+                </p>
+
+                <figure>
+                    <img src="./images/daily_mean_length.jpeg"
+                         alt="Daily average ride duration"
+                         style="max-width:100%; height:auto;">
+
+                    <figcaption>
+                        Daily mean ride duration.
+                    </figcaption>
+                </figure>
+
+            </section>
+
+
+            <!-- Stage 5: Share -->
+            <section id="share">
+
+                <h2>Stage 5: Share</h2>
+
+                <p>
+                    The findings from the data analysis
+                    are organized into a presentation
+                    for the marketing director, Lily
+                    Moreno, and the Cyclistic executive
+                    team.
+                </p>
+
+                <p>
+                    The presentation summarizes the
+                    analytical process, key findings,
+                    and proposed business recommendations.
+                    It communicates the differences
+                    between casual riders and annual
+                    members and identifies potential
+                    opportunities for membership growth.
+                </p>
+
+                <p>
+                    <a href="./cyclistic_presentation.pptx">
+                        View the Cyclistic Analysis Presentation →
+                    </a>
+                </p>
+
+            </section>
+
+
+            <!-- Stage 6: Act -->
+            <section id="act">
+
+                <h2>Stage 6: Act</h2>
+
+                <p>
+                    Based on the findings, I propose
+                    the following three recommendations
+                    to support Cyclistic's membership
+                    growth strategy.
+                </p>
+
                 <ol>
+
                     <li>
-                        Annual promotion is likely successful based on the casual rider trend line of increasing percentages of riders.
+                        <strong>Develop targeted membership promotions.</strong>
+
+                        The monthly trend analysis indicates
+                        an opportunity to attract casual
+                        riders to annual membership.
+                        Cyclistic should consider targeted
+                        promotional campaigns that communicate
+                        the potential benefits of annual
+                        membership to existing casual
+                        customers.
                     </li>
+
                     <li>
-                        Their geo-location background is similar to that of the members based on their starting points of trips. There are there is no problem for the casual riders to use the bikes at the current stations.
+                        <strong>Leverage the existing station network.</strong>
+
+                        The geographic distributions of
+                        starting stations appear similar
+                        for casual riders and annual
+                        members. Therefore, Cyclistic
+                        can use its existing station
+                        network as a foundation for
+                        membership campaigns rather
+                        than assuming that different
+                        geographic locations require
+                        separate strategies.
                     </li>
+
                     <li>
-                        Their usage patterns are similar to those of the members by considering the ride lengths by days of the week. Their trip lengths are even longer, so they can save more if they subscribe their annual membership.
+                        <strong>Promote membership benefits based on riding behavior.</strong>
+
+                        Casual riders have longer average
+                        ride durations than annual members.
+                        Cyclistic could use this difference
+                        to develop promotional messages
+                        emphasizing the potential value
+                        of annual membership for frequent
+                        or longer-duration riders.
+                        Actual financial savings should
+                        be evaluated using membership
+                        fees and trip pricing before
+                        making specific savings claims.
                     </li>
+
                 </ol>
-            </secton>
- 
+
+            </section>
+
+
+            <!-- Conclusion -->
+            <section id="conclusion">
+
+                <h2>Conclusion</h2>
+
+                <p>
+                    This analysis examined differences
+                    in bike usage between casual riders
+                    and annual members through geographic
+                    comparisons, ride-duration analysis,
+                    and monthly and daily usage patterns.
+                    The findings provide a starting point
+                    for understanding customer behavior
+                    and identifying opportunities to
+                    increase annual memberships.
+                </p>
+
+                <p>
+                    By using these insights to develop
+                    targeted promotions and evaluate
+                    membership benefits, Cyclistic
+                    can make more informed marketingtouhu11.github.io/Project-Portfolio/
+                    decisions and strengthen its
+                    long-term membership growth strategy.
+                </p>
+
+            </section>
+
+
+            <!-- Back to Portfolio -->
+            <footer>
+                <p>
+                    <a href="../index.html">
+                        ← Back to Data Analytics Portfolio
+                    </a>
+                </p>
+
+                <p>
+                    <a href="#top">
+                        Back to Top ↑
+                    </a>
+                </p>
+            </footer>
+
         </article>
-        
-        <script src = "main.js"> </script>    
-    </body class = "main-content">
+    </main>
+
+</body>
 </html>
-
-

@@ -4,15 +4,15 @@
         font-size: 200%;
         }
 
-
     .roc-image {
         width: 500px;
         height: auto;
         max-width: 100%
     }
 
-
-
-
+.equation {
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-
+}

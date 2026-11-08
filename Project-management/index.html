@@ -1,264 +1,420 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Porfolio</title>
-        <link rel = "stylesheet" href = "../styles.css"></link>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Employee attrition analysis using exploratory data analysis, Random Forest, and AdaBoost classification models.">
+    <title>Employee Attrition Analysis | Data Analytics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
 
-    </head>
-    <body>
-        <article>
-           <h1> Case Study: Employee Attrition </h1> 
-           <section>
-            <h2>Introduction</h2>
+<body class="main-content">
+    <article>
+
+        <h1>Case Study: Employee Attrition Analysis</h1>
+
+        <!-- Introduction -->
+        <section>
+            <h2>1. Introduction</h2>
+
             <p>
-               The historical data has shown that the attrition rate is 27%, which is higher than the average 
-               of 17.4% (Ravio, 2026). This has a negative impact on businesses related productitity, costs, 
-               and loss of repugation. With a high attrition rate, a business loses its talents and employees 
-               with better work experience. Also, it increases costs to businesses to recruit and train new employees. 
-               Additionally, it damages a company's repuation.
+                Employee attrition can create significant challenges for organizations,
+                including reduced productivity, increased recruitment and training costs,
+                and the loss of experienced employees. The dataset examined in this project
+                shows an employee attrition rate of approximately 27.4% (Figure 1),
+                compared with the 17.4% benchmark cited in the original analysis.
             </p>
-           </section>
 
-           <section>
-            <h2> Attribution </h2>
-                <ul>
-                    <li> Older employees </li>
-                    <li> Employees with higher monthly income </li>
-                    <li> Employees with the higher total working years </li>
-                </ul>
-                <p>
-                    <img src = "./images/attrition_rate.png" width ="800" height = "400">
-                </p>
-           </section>
-
-           <section>
-            <h2> Causes of Attrition </h2>
-                <ul>
-                    <li> Job roles </li>
-                    <li> Education </li>
-                    <li> Gender </li>
-                    <li> Marrital Status </li>
-                    <li> Job satisfaction </li>
-                    <li> Over-time </li>
-                    <li> Stock option </li>
-                </ul>
-                              <p>
-                    Firstly, 
-                    <img src = "./images/causes.png" width ="800" height = "400">
-                </p>
-           </section>
-
-           <section>
-            <h2> Prediciton Models for Attrition</h2>
-                <ul>
-                    <li> Random forest classification </li>
-                    <li> AdaBoost classification </li>
-                </ul>
-
-           </section>
-
-           <section>
-            <h2> Classification Rates for Random Forest and AdaBoost Classification</h2>
-   
-   
             <p>
-                    The prediction dashboard has shown that for job satisfication level 1 and tenure of 0, 
-                    random forest performs consistently better than AdaBoost. The precision for random forest 
-                    is 82% and the recall is 82% compared to AdaBoost of 100% and 17% on the precision and
-                    the recall.
+                Understanding the factors associated with employee attrition can help
+                organizations identify potential retention challenges and make more
+                informed workforce decisions. This project explores employee
+                characteristics and compares two classification models,
+                Random Forest and AdaBoost, to predict employee attrition.
             </p>
-            <p><img src = "./images/classification_10.png" width ="800" height = "400"></p>
+        </section>
+
+        <!-- Data Exploration -->
+        <section>
+            <h2>2. Data Exploration</h2>
+
             <p>
-                    Similarly, at the job satisfation level 1 and tenure 1, random forest is still better<br>
-                    than AdaBoost. Its precision and recall are 100% compared to the recision and the recall of 
-                    AdaBoost of 100% and 86%.
-            </p>
-            <p> <img src = "./images/classification_11.png" width ="800" height = "400"></p>
-    
-     <table>
-        <thead>
-            <tr class="border-top">
-                <th rowspan="2" class="text-left" style="vertical-align: bottom;">Job Satisfaction</th>
-                <th rowspan="2" class="text-left" style="vertical-align: bottom;">Tenure</th>
-                <th colspan="4" class="border-bottom">Rate</th>
-            </tr>
-            <tr class="border-bottom">
-                <th colspan="2">Random Forest</th>
-                <th colspan="2">AdaBoost</th>
-            </tr>
-            <tr class="border-bottom">
-                <th></th>
-                <th></th>
-                <th>Precision</th>
-                <th>Recall</th>
-                <th>Precision</th>
-                <th>Recall</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-left">1</td>
-                <td class="text-left">0</td>
-                <td>0.82</td>
-                <td>0.82</td>
-                <td>1</td>
-                <td>0.12</td>
-            </tr>
-            <tr>
-                <td class="text-left">1</td>
-                <td class="text-left">1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0.86</td>
-            </tr>
-            <tr>
-                <td class="text-left">2</td>
-                <td class="text-left">0</td>
-                <td>0.67</td>
-                <td>0.67</td>
-                <td>1</td>
-                <td>0.36</td>
-            </tr>
-            <tr>
-                <td class="text-left">2</td>
-                <td class="text-left">1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0.86</td>
-            </tr>
-            <tr>
-                <td class="text-left">3</td>
-                <td class="text-left">0</td>
-                <td>0.92</td>
-                <td>0.92</td>
-                <td>1</td>
-                <td>0.32</td>
-            </tr>
-            <tr>
-                <td class="text-left">3</td>
-                <td class="text-left">1</td>
-                <td>0.86</td>
-                <td>0.86</td>
-                <td>1</td>
-                <td>0.86</td>
-            </tr>
-            <tr>
-                <td class="text-left">4</td>
-                <td class="text-left">0</td>
-                <td>0.92</td>
-                <td>0.92</td>
-                <td>1</td>
-                <td>0.36</td>
-            </tr>
-            <tr class="border-bottom">
-                <td class="text-left">4</td>
-                <td class="text-left">1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0.78</td>
-            </tr>
-            <tr class="average-row">
-                <td class="text-left">Average</td>
-                <td></td>
-                <td>0.90</td>
-                <td>0.90</td>
-                <td>1</td>
-                <td>0.57</td>
-            </tr>
-        </tbody>
-    </table>
-
-            <h3>Random Forest Classification Metrics</h3>
-    
-    <table class="academic-table">
-        <thead>
-            <!-- Row 1: Main Category Header -->
-            <tr>
-                <th rowspan="3" valign="middle">Metric</th>
-                <th colspan="2" class="center-header">Proportion</th>
-            </tr>
-            <!-- Row 2: Sub-category Header with its own underline -->
-            <tr>
-                <th colspan="2" class="sub-nested-header">Test</th>
-            </tr>
-            <!-- Row 3: Individual Column Labels -->
-            <tr class="header-bottom-border">
-                <th>Train</th>
-                <th>Test</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="row-label">Accuracy</td>
-                <td>0.97</td>
-                <td>0.83</td>
-            </tr>
-            <tr>
-                <td class="row-label">Precision</td>
-                <td>0.97</td>
-                <td>0.87</td>
-            </tr>
-            <tr>
-                <td class="row-label">Recall</td>
-                <td>0.92</td>
-                <td>0.52</td>
-            </tr>
-        </tbody>
-    </table>
-
-
-            <h3>AdaBoost Classification Metrics</h3>
-    <table class="academic-table">
-        <thead>
-            <!-- Row 1: Main Category Header -->
-            <tr>
-                <th rowspan="3" valign="middle">Metric</th>
-                <th colspan="2" class="center-header">Proportion</th>
-            </tr>
-            <!-- Row 2: Sub-category Header with its own underline -->
-            <tr>
-                <th colspan="2" class="sub-nested-header">Test</th>
-            </tr>
-            <!-- Row 3: Individual Column Labels -->
-            <tr class="header-bottom-border">
-                <th>Train</th>
-                <th>Test</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="row-label">Accuracy</td>
-                <td>0.84</td>
-                <td>0.83</td>
-            </tr>
-            <tr>
-                <td class="row-label">Precision</td>
-                <td>1.00</td>
-                <td>1.00</td>
-            </tr>
-            <tr>
-                <td class="row-label">Recall</td>
-                <td>0.43</td>
-                <td>0.43</td>
-            </tr>
-        </tbody>
-    </table>  
-
-            <h2>Recommendation for the Model to Prediction Attrition </h2>
-            <p> To identify the features and prediction attrition, the random forest classification
-                perform better than AdaBoost.
+                The analysis uses the IBM HR Analytics Employee Attrition
+                and Performance dataset published by Pavan Subhash on Kaggle.
+                It contains 1,470 employee records and 35 attributes, including
+                attrition, department, education, gender, job level, job role,
+                marital status, job satisfaction, overtime, and stock option level.
             </p>
 
-        </article>
-        
-        <script src = "main.js"> </script>    
-    </body class = "main-content">
+            <h3>2.1 Employee Attrition Rate</h3>
+
+            <p>
+                As shown in Figure 1, approximately 27.4% of employees in the
+                dataset left the organization. This rate provides an overview
+                of the attrition problem and motivates further investigation
+                into employee characteristics associated with turnover.
+            </p>
+
+            <figure>
+                <img
+                    src="./images/attrition_rate.png"
+                    alt="Employee attrition rate"
+                    loading="lazy"
+                    style="max-width: 100%; height: auto;"
+                >
+                <figcaption>
+                    <strong>Figure 1.</strong> Employee Attrition Rate
+                </figcaption>
+            </figure>
+
+            <h3>2.2 Relationships Between Attrition and Employee Attributes</h3>
+
+            <p>
+                Figure 2 compares attrition rates across selected employee
+                attributes. The differences in attrition rates across categories
+                provide an initial view of how employee characteristics may
+                be associated with the likelihood of leaving the organization.
+            </p>
+
+            <p>The exploratory findings from the original analysis include:</p>
+
+            <ul>
+                <li>
+                    <strong>Department:</strong> Attrition rates vary across
+                    departments.
+                </li>
+                <li>
+                    <strong>Education:</strong> Attrition rates differ across
+                    education levels.
+                </li>
+                <li>
+                    <strong>Gender:</strong> The observed attrition rates
+                    appear relatively similar between genders.
+                </li>
+                <li>
+                    <strong>Job level:</strong> Attrition rates vary across
+                    job levels.
+                </li>
+                <li>
+                    <strong>Job role:</strong> Managers and research directors
+                    are among the roles identified in the original analysis
+                    as having higher attrition rates.
+                </li>
+                <li>
+                    <strong>Job satisfaction:</strong> Higher job satisfaction
+                    is associated with lower attrition rates.
+                </li>
+                <li>
+                    <strong>Overtime:</strong> Employees who work overtime
+                    appear more likely to leave.
+                </li>
+                <li>
+                    <strong>Stock option level:</strong> Attrition rates
+                    differ across stock option levels, with levels 0 and 3
+                    identified in the original analysis.
+                </li>
+            </ul>
+
+            <figure>
+                <img
+                    src="./images/causes.png"
+                    alt="Employee attrition percentages across selected employee attributes"
+                    loading="lazy"
+                    style="max-width: 100%; height: auto;"
+                >
+                <figcaption>
+                    <strong>Figure 2.</strong> Percentage of Attrition by Employee Attributes
+                </figcaption>
+            </figure>
+
+            <p>
+                These findings describe observed relationships in the dataset.
+                They do not, by themselves, establish that any particular
+                employee attribute causes attrition.
+            </p>
+        </section>
+
+        <!-- Prediction Models -->
+        <section>
+            <h2>3. Predictive Models for Employee Attrition</h2>
+
+            <p>
+                This project compares two classification algorithms:
+                Random Forest and AdaBoost. Both models are used to predict
+                whether an employee will leave the organization.
+            </p>
+
+            <p>
+                <strong>Random Forest</strong> is an ensemble learning method
+                that combines predictions from multiple decision trees.
+                The final classification is determined through an aggregation
+                of the individual tree predictions.
+            </p>
+
+            <p>
+                <strong>AdaBoost</strong> is an ensemble learning method that
+                builds a sequence of weak classifiers. It adjusts the emphasis
+                placed on previously misclassified observations so that
+                subsequent classifiers can focus on those observations.
+            </p>
+
+            <p>
+                The two models are evaluated using accuracy, precision,
+                and recall. These metrics provide different perspectives
+                on classification performance.
+            </p>
+        </section>
+
+        <!-- Model Evaluation -->
+        <section>
+            <h2>4. Model Evaluation and Comparison</h2>
+
+            <h3>4.1 Classification Performance by Job Satisfaction and Tenure</h3>
+
+            <p>
+                Figures 3 and 4 compare the classification performance of
+                Random Forest and AdaBoost for selected combinations of
+                job satisfaction and tenure. Table 1 summarizes the
+                precision and recall results across the four job satisfaction
+                levels and two tenure categories.
+            </p>
+
+            <figure>
+                <img
+                    src="./images/classification_10.png"
+                    alt="Random Forest and AdaBoost performance metrics at job satisfaction level 1 and tenure 0"
+                    loading="lazy"
+                    style="max-width: 100%; height: auto;"
+                >
+                <figcaption>
+                    <strong>Figure 3.</strong> Classification Performance
+                    at Job Satisfaction Level 1 and Tenure 0
+                </figcaption>
+            </figure>
+
+            <figure>
+                <img
+                    src="./images/classification_11.png"
+                    alt="Random Forest and AdaBoost performance metrics at job satisfaction level 1 and tenure 1"
+                    loading="lazy"
+                    style="max-width: 100%; height: auto;"
+                >
+                <figcaption>
+                    <strong>Figure 4.</strong> Classification Performance
+                    at Job Satisfaction Level 1 and Tenure 1
+                </figcaption>
+            </figure>
+
+            <p>
+                Table 1 shows that Random Forest generally achieves higher
+                recall across the job satisfaction and tenure combinations.
+                For example, when job satisfaction is 1 and tenure is 0,
+                Random Forest has precision and recall of 0.82, while
+                AdaBoost has precision of 1.00 and recall of 0.12.
+                This illustrates the difference between identifying
+                predicted attrition cases accurately and identifying
+                a larger proportion of actual attrition cases.
+            </p>
+
+            <p><strong>Table 1.</strong> Precision and Recall by Job Satisfaction and Tenure</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Job Satisfaction</th>
+                        <th rowspan="2">Tenure</th>
+                        <th colspan="2">Random Forest</th>
+                        <th colspan="2">AdaBoost</th>
+                    </tr>
+                    <tr>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td><td>0</td>
+                        <td>0.82</td><td>0.82</td>
+                        <td>1.00</td><td>0.12</td>
+                    </tr>
+                    <tr>
+                        <td>1</td><td>1</td>
+                        <td>1.00</td><td>1.00</td>
+                        <td>1.00</td><td>0.86</td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>0</td>
+                        <td>0.67</td><td>0.67</td>
+                        <td>1.00</td><td>0.36</td>
+                    </tr>
+                    <tr>
+                        <td>2</td><td>1</td>
+                        <td>1.00</td><td>1.00</td>
+                        <td>1.00</td><td>0.86</td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>0</td>
+                        <td>0.92</td><td>0.92</td>
+                        <td>1.00</td><td>0.32</td>
+                    </tr>
+                    <tr>
+                        <td>3</td><td>1</td>
+                        <td>0.86</td><td>0.86</td>
+                        <td>1.00</td><td>0.86</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>0</td>
+                        <td>0.92</td><td>0.92</td>
+                        <td>1.00</td><td>0.36</td>
+                    </tr>
+                    <tr>
+                        <td>4</td><td>1</td>
+                        <td>1.00</td><td>1.00</td>
+                        <td>1.00</td><td>0.78</td>
+                    </tr>
+                    <tr class="average-row">
+                        <td>Average</td><td>—</td>
+                        <td>0.90</td><td>0.90</td>
+                        <td>1.00</td><td>0.57</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>4.2 Overall Model Performance</h3>
+
+            <p>
+                Tables 2 and 3 compare the training and testing performance
+                of the two classification models. On the test data,
+                both models achieve an accuracy of 0.83. However, their
+                precision and recall results differ.
+            </p>
+
+            <p>
+                Random Forest achieves test precision of 0.87 and recall
+                of 0.52. AdaBoost achieves test precision of 1.00 and
+                recall of 0.43. Thus, Random Forest identifies a greater
+                proportion of actual attrition cases, while AdaBoost
+                produces a higher proportion of correct predictions
+                among the cases it classifies as attrition.
+            </p>
+
+            <p><strong>Table 2.</strong> Random Forest Classification Metrics</p>
+
+            <table class="academic-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Train</th>
+                        <th>Test</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Accuracy</td>
+                        <td>0.97</td>
+                        <td>0.83</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Precision</td>
+                        <td>0.97</td>
+                        <td>0.87</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Recall</td>
+                        <td>0.92</td>
+                        <td>0.52</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Table 3.</strong> AdaBoost Classification Metrics</p>
+
+            <table class="academic-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Train</th>
+                        <th>Test</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="row-label">Accuracy</td>
+                        <td>0.84</td>
+                        <td>0.83</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Precision</td>
+                        <td>1.00</td>
+                        <td>1.00</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Recall</td>
+                        <td>0.43</td>
+                        <td>0.43</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Recommendations -->
+        <section>
+            <h2>5. Model Recommendation</h2>
+
+            <p>
+                Based on the test results, Random Forest is the preferred
+                model when the primary objective is to identify employees
+                who may leave the organization. Its test recall of 0.52
+                is higher than AdaBoost's 0.43, meaning that it identifies
+                a larger proportion of actual attrition cases.
+            </p>
+
+            <p>
+                However, AdaBoost achieves higher test precision (1.00
+                compared with 0.87). Therefore, model selection should
+                depend on the organization's priorities. If missing
+                employees at risk of leaving is a major concern,
+                Random Forest offers an advantage in this comparison.
+            </p>
+
+            <p>
+                Overall, the analysis demonstrates how exploratory data
+                analysis and classification models can support
+                data-driven employee retention decisions.
+            </p>
+        </section>
+
+        <!-- References -->
+        <section>
+            <h2>6. References</h2>
+
+            <p>
+                Pavan Subhash. (2016).
+                <em>IBM HR Analytics Employee Attrition &amp; Performance.</em>
+                Kaggle.
+                <a href="https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset"
+                   target="_blank" rel="noopener noreferrer">
+                    Dataset link
+                </a>
+            </p>
+
+            <p>
+                Ravio. (2022).
+                <em>Retention trends 2026: Attrition rates data and employee retention strategies.</em>
+                <a href="https://www.simplilearn.com/data-sandbox-in-big-data-article"
+                   target="_blank" rel="noopener noreferrer">
+                    Source link
+                </a>
+            </p>
+        </section>
+
+        <p>
+            <a href="../index.html">← Back to Portfolio</a>
+        </p>
+
+    </article>
+
+</body>
 </html>
-
-
